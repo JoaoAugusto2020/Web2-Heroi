@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1" />
+  <title>Listagem de Herois</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+  <h1>Listagem de Herois</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Vida</th>
+      <th scope="col">Defesa</th>
+      <th scope="col">Ataque</th>
+      <th scope="col">Universo</th>
+      <th scope="col">Ano de Origem</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="heroi : ${heroisList}">
+      <td scope="row" th:text="${heroi.idHeroi}"></td>
+      <td scope="row" th:text="${heroi.nome}"></td>
+      <td scope="row" th:text="${heroi.vida}"></td>
+      <td scope="row" th:text="${heroi.defesa}"></td>
+      <td scope="row" th:text="${heroi.ataque}"></td>
+      <td scope="row" th:text="${heroi.universo}"></td>
+      <td scope="row" th:text="${heroi.anoOrigem}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
