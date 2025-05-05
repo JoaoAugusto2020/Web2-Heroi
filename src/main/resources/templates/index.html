@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Spring Heroi</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
 </head>
 <body>
-<h1>Teste do meu Spring Heroi</h1>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Heróis</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/heroi/create}">Cadastrar Heroi</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/heroi/list}">Listar Herois</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--<div class="container">-->
+<!--    <div class="position-absolute top-50 start-50 translate-middle">-->
+<!--        <a class="btn btn-primary" role="button" th:href="@{/heroi/create}">Cadastrar Heroi</a>-->
+<!--        <a class="btn btn-primary" role="button" th:href="@{/heroi/list}">Listar Herois</a>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 </html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="ISO-8859-1" />
+  <title>Editar Herói</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/}">Heróis</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/heroi/create}">Cadastrar Heroi</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/heroi/list}">Listar Herois</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>Editar Herói</h1>
+  <form action="#" th:action="@{/heroi/save}" th:object="${heroi}" method="POST">
+
+    <!-- Campo necessário para que o save saiba que não estamos criando, mas editando um herói -->
+    <input type="hidden" th:field="*{idHeroi}" />
+
+    <div class="form-group row">
+      <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{nome}" class="form-control" id="nome" name="nome">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="vida" class="col-sm-2 col-form-label">Pontos de Vida</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{vida}" class="form-control" id="vida" name="vida">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="defesa" class="col-sm-2 col-form-label">Pontos de Defesa</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{defesa}" class="form-control" id="defesa" name="defesa">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="ataque" class="col-sm-2 col-form-label">Pontos de Ataque</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{ataque}" class="form-control" id="ataque" name="ataque">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="universo" class="col-sm-2 col-form-label">Universo do Herói</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{universo}" class="form-control" id="universo" name="universo">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="anoOrigem" class="col-sm-2 col-form-label">Ano de Origem</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{anoOrigem}" class="form-control" id="anoOrigem" name="anoOrigem">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info col-2">Editar Produto</button>
+  </form>
+</div>
+</body>
+</html>
