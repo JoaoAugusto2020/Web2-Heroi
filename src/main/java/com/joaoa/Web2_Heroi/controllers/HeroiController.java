@@ -3,9 +3,11 @@ package com.joaoa.Web2_Heroi.controllers;
 import com.joaoa.Web2_Heroi.model.Heroi;
 import com.joaoa.Web2_Heroi.service.HeroiService;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +32,10 @@ public class HeroiController {
     }
 
     @PostMapping("/heroi/save")
-    public String postMethodName(@ModelAttribute Heroi heroi) {
+    public String postMethodName(@ModelAttribute @Valid Heroi heroi, BindingResult result) {
+        if (result.hasErrors()) {
+            return "heroi/create";
+        }
         heroiService.saveHeroi(heroi);
         return "redirect:/heroi/list";
     }
