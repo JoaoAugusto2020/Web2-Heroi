@@ -15,8 +15,8 @@
       <th scope="col">Ataque</th>
       <th scope="col">Universo</th>
       <th scope="col">Ano de Origem</th>
-      <th scope="col">Editar</th>
-      <th scope="col">Excluir</th>
+      <th sec:authorize="hasAuthority('Admin')" scope="col">Editar</th>
+      <th sec:authorize="hasAuthority('Admin')" scope="col">Excluir</th>
     </tr>
     </thead>
     <tbody>
@@ -28,8 +28,8 @@
       <td scope="row" th:text="${heroi.ataque}"></td>
       <td scope="row" th:text="${heroi.universo}"></td>
       <td scope="row" th:text="${heroi.anoOrigem}"></td>
-      <td><a th:href="@{/heroi/edit/{idHeroi}(idHeroi=${heroi.idHeroi})}">Editar</a></td>
-      <td><a th:href="@{/heroi/delete/{idHeroi}(idHeroi=${heroi.idHeroi})}">Deletar</a></td>
+      <td sec:authorize="hasAuthority('Admin')"><a th:href="@{/heroi/edit/{idHeroi}(idHeroi=${heroi.idHeroi})}">Editar</a></td>
+      <td sec:authorize="hasAuthority('Admin')"><a th:href="@{/heroi/delete/{idHeroi}(idHeroi=${heroi.idHeroi})}">Deletar</a></td>
     </tr>
     </tbody>
   </table>

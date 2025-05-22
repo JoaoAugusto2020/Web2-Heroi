@@ -28,15 +28,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/home", "/register", "/saveUser").permitAll()
-                        .requestMatchers("/product").hasAuthority("Admin")
-                        .anyRequest().authenticated())
-                .formLogin(login -> login
-                        .defaultSuccessUrl("/", true))
-                .logout(logout -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
-                .exceptionHandling(handling -> handling
-                        .accessDeniedPage("/accessDenied"))
+            .requestMatchers("/home", "/register", "/saveUser").permitAll()
+            .requestMatchers("/heroi/*").hasAuthority("Admin")
+            .anyRequest().authenticated())
+                .formLogin(login -> login.defaultSuccessUrl("/", true))
+                .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
+                .exceptionHandling(handling -> handling.accessDeniedPage("/accessDenied"))
                 .authenticationProvider(authenticationProvider());
 
         return http.build();
