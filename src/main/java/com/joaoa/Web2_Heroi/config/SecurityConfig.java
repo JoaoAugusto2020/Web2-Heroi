@@ -31,13 +31,15 @@ public class SecurityConfig {
             .requestMatchers("/home", "/register", "/saveUser").permitAll()
             .requestMatchers("/heroi/*").hasAuthority("Admin")
             .anyRequest().authenticated())
-                .formLogin(login -> login.defaultSuccessUrl("/", true))
-                .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
-                .exceptionHandling(handling -> handling.accessDeniedPage("/accessDenied"))
+                .formLogin(login ->
+                            login.defaultSuccessUrl("/", true))
+                .logout(logout ->
+                            logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
+                .exceptionHandling(handling ->
+                            handling.accessDeniedPage("/accessDenied"))
                 .authenticationProvider(authenticationProvider());
 
         return http.build();
-
     }
 
     @Bean
