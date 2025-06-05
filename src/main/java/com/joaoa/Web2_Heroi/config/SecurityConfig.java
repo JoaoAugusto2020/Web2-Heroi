@@ -29,6 +29,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(requests -> requests
             .requestMatchers("/home", "/register", "/saveUser").permitAll()
+            //.requestMatchers("/heroi/list").hasAuthority("Manager")
             .requestMatchers("/heroi/*").hasAuthority("Admin")
             .anyRequest().authenticated())
                 .formLogin(login ->
