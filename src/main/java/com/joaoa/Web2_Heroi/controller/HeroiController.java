@@ -17,16 +17,26 @@ public class HeroiController {
     @Autowired
     private IHeroiService IHeroiService;
 
+    //pagina
     @GetMapping("/list")
     public String listar(Model model) {
         model.addAttribute("heroisList", IHeroiService.getAllHerois());
         return "heroi/list";
     }
 
+    //pagina
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("heroi", new Heroi());
         return "heroi/create";
+    }
+
+    //pagina
+    @GetMapping("/edit/{idHeroi}")
+    public String edit(@PathVariable Long idHeroi, Model model) {
+        Heroi heroi = IHeroiService.getHeroiById(idHeroi);
+        model.addAttribute("heroi", heroi);
+        return "heroi/edit";
     }
 
     @PostMapping("/save")
@@ -42,12 +52,5 @@ public class HeroiController {
     public String delete(@PathVariable Long idHeroi) {
         this.IHeroiService.deleteHeroiById(idHeroi);
         return "redirect:/heroi/list";
-    }
-
-    @GetMapping("/edit/{idHeroi}")
-    public String edit(@PathVariable Long idHeroi, Model model) {
-        Heroi heroi = IHeroiService.getHeroiById(idHeroi);
-        model.addAttribute("heroi", heroi);
-        return "heroi/edit";
     }
 }
